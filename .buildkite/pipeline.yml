@@ -1,0 +1,9 @@
+steps:
+  - label: ':brain: Everything'
+    env:
+      SEGMENT_CONTEXTS: "snyk,aws-credentials"
+      SEGMENT_BUILDKITE_IMAGE: 'buildkite-agent-golang1.17'
+    agents:
+      queue: v1
+    commands: |
+      - imager buildpush . -f Dockerfile --repository=aws-sigv4-proxy --build-arg VERSION=${BUILDKITE_COMMIT_REVISION}
